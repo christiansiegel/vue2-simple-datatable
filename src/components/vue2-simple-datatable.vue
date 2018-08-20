@@ -13,7 +13,7 @@
         <tr>
           <th v-for="column in columns" :key="'search_' + column" scope="col">
             <div class="input-group">
-              <input type="text" class="form-control" v-model.lazy="search[column]" v-debounce="500" v-bind:placeholder="'Suche in \'' + column + '\''">
+              <input type="text" class="form-control" v-model.lazy="search[column]" v-debounce="500" v-bind:placeholder="filterByText(column)">
             </div>
           </th>
         </tr>
@@ -25,7 +25,7 @@
       </tbody>
     </table>
     <paginator :total="totalPages" :current="currentPage" v-on:select="selectPage"></paginator>
-    <p class="small text-center">{{ showingText }}</p>
+    <p class="small text-center">{{ countText }}</p>
   </div>
 </template>
 
@@ -41,15 +41,28 @@
       debounce
     },
     props: {
-      data: Array,
-      columns: Array
+      data: {
+        type: Array,
+        default: []
+      },
+      columns: {
+        type: Array,
+        default: []
+      }
     },
     data: () => ({
       limit: 10,
       currentPage: 0,
       sort: undefined,
       ascending: true, // false = descending
-      search: {}
+      search: {},
+      i18n: {
+        countPagedN: 'Showing {from} to {to} of {count} records',
+        countN: '{count} records',
+        count1: 'One record',
+        count0: 'No records',
+        filterBy: 'Filter by {column}'
+      }
     }),
     computed: {
       totalPages: function () {
@@ -90,13 +103,15 @@
       offset: function () {
         return this.limit * this.currentPage
       },
-      showingText: function() {
+      countText: function() {
         if (this.totalPages === 1) {
-          if (this.total === 0) return 'Keine Einträge'
-          if (this.total === 1) return '1 Eintrag'
-          return this.total + ' Einträge'
+          if (this.total === 0) return this.i18n.count0
+          if (this.total === 1) return this.i18n.count1
+          return this.i18n.countN.replace('{count}', this.total);
         }
-        return (this.offset + 1) + ' bis ' + (this.offset + this.limit) + ' von ' + this.total + ' Einträgen'
+        return this.i18n.countPagedN.replace('{from}', this.offset + 1)
+                                    .replace('{to}', this.offset + this.limit)
+                                    .replace('{count}', this.total);
       }
     },
     watch: {
@@ -121,6 +136,9 @@
         if (this.sort !== column) return ['fa', 'fa-sort']
         if (this.ascending === true) return ['fa', 'fa-sort-up']
         return ['fa', 'fa-sort-down']
+      },
+      filterByText: function(column) {
+        return this.i18n.filterBy.replace('{column}', column)
       }
     }
   }

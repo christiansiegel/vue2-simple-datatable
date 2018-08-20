@@ -43,6 +43,19 @@ export default {
 }
 ```
 
+### i18n
+
+``` js
+const i18n = {
+    countPagedN: '{from} bis {to} von {count} Einträgen',
+    countN: '{count} Einträge',
+    count1: '1 Eintrag',
+    count0: 'Keine Einträge',
+    filterBy: 'Suche nach \'{column}\''
+}
+Vue.use(Vue2SimpleDatatable, {i18n})
+```
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
