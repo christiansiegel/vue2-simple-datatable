@@ -1,5 +1,5 @@
 /**
- * vue2-simple-datatable
+ * vue2-simple-datatable (https://github.com/christiansiegel/vue2-simple-datatable)
  * 
  * Copyright (c) 2018 Christian Siegel
  * 

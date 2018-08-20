@@ -27,7 +27,20 @@ A simple, basic, fast DataTable Component Vue.js 2.0.
 ## Usage
 
 ``` html
-<vue2-simple-datatable />
+<vue2-simple-datatable :data="data" :columns="columns" />
+```
+
+``` js
+export default {
+  data: () => ({
+    data: [
+      { 'a': 1, 'b': 'z' },
+      { 'a': 2, 'b': 'y' },
+      { 'a': 3, 'b': 'x' }
+    ],
+    columns: [ 'a', 'b' ]
+  })
+}
 ```
 
 ## License
