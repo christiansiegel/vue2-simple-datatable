@@ -16,14 +16,6 @@ A simple, basic, fast DataTable Component Vue.js 2.0.
 
   Just include `./dist/vue2-simple-datatable.min.js` after Vue itself.
 
-- #### Mixed
-
-  Include `./dist/vue2-simple-datatable.min.js` before _app.js_.
-
-  ``` js
-  Vue.use(window.Vue2SimpleDatatable)
-  ```
-
 ## Usage
 
 ``` html

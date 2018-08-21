@@ -37,10 +37,6 @@ var Vue2SimpleDatatable = {
 
 export default Vue2SimpleDatatable;
 
-if (typeof window !== 'undefined') {
-    if (window.Vue) {
-        window.Vue.use(Vue2SimpleDatatable)
-    } else {
-        window.Vue2SimpleDatatable = Vue2SimpleDatatable
-    }
+if (typeof window !== 'undefined' && window.Vue) {
+    window.Vue.use(Vue2SimpleDatatable)
 }
