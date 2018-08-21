@@ -1,8 +1,9 @@
-import vue from 'rollup-plugin-vue'
-import babel from 'rollup-plugin-babel'
-import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
-import { uglify } from 'rollup-plugin-uglify';
+import vue from 'rollup-plugin-vue';
+import css from 'rollup-plugin-css-only';
+import buble from 'rollup-plugin-buble';
+import nodeResolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
+import uglify from 'rollup-plugin-uglify';
 
 export default {
     input: 'src/main.js',
@@ -13,17 +14,11 @@ export default {
         sourcemap: true
     },
     plugins: [
-        resolve(),
         vue(),
+        css(),
+        buble(),
+        nodeResolve({ browser: true, jsnext: true, main: true }),
         commonjs(),
-        babel({
-            exclude: 'node_modules/**',
-            presets: ['es2015-rollup']
-        }),
-        uglify({
-            output: {
-                comments: 'all'
-            }
-        })
+        uglify()
     ]
 }
