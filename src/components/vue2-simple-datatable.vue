@@ -68,22 +68,30 @@
       totalPages: function () {
         return Math.ceil(this.total / this.limit)
       },
+      lowerCaseSearch: function () {
+        const keys = Object.keys(this.search)
+        let result = {}
+        keys.forEach(key => {
+          const val = this.search[key].toLowerCase()
+          if (val) result[key] = val
+        });
+        return result
+      },
       filteredData: function() {
-        const that = this
-        const searchedCols = Object.keys(this.search)
-        let colMatch = function(row, colName) {
+        const lowerCaseSearch = this.lowerCaseSearch
+        const colMatch = (row, colName) => {
           const colVal = row[colName].toLowerCase()
-          const searchVal = that.search[colName].toLowerCase()
-          return !searchVal || colVal.includes(searchVal);
+          const searchVal = lowerCaseSearch[colName]
+          return colVal.includes(searchVal)
         }
-        let rowMatch = function(row) {
-          return searchedCols.map(col => colMatch(row, col))
-                             .every(found => found === true)
-        }
+        const searchedCols = Object.keys(lowerCaseSearch)
+        const rowMatch = (row) => (
+          !searchedCols.some(col => !colMatch(row, col))
+        )
         return this.data.filter(row => rowMatch(row))
       },
       filteredAndSortedData: function() {
-        let rows = this.filteredData
+        const rows = this.filteredData
         if(this.sort) {
           const col = this.sort
           if(this.ascending) {
@@ -95,7 +103,8 @@
         return rows
       },
       rows: function () {
-        return this.filteredAndSortedData.slice(this.offset, this.offset + this.limit)
+        const all = this.filteredAndSortedData
+        return all.slice(this.offset, this.offset + this.limit)
       },
       total: function () {
         return this.filteredData.length
@@ -107,11 +116,11 @@
         if (this.totalPages === 1) {
           if (this.total === 0) return this.i18n.count0
           if (this.total === 1) return this.i18n.count1
-          return this.i18n.countN.replace('{count}', this.total);
+          return this.i18n.countN.replace('{count}', this.total)
         }
         return this.i18n.countPagedN.replace('{from}', this.offset + 1)
                                     .replace('{to}', this.offset + this.limit)
-                                    .replace('{count}', this.total);
+                                    .replace('{count}', this.total)
       }
     },
     watch: {
