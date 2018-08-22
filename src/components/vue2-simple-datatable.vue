@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="vue2-simple-datatable">
     <table class="table table-striped">
       <thead>
         <tr>
