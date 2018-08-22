@@ -1,6 +1,6 @@
 # vue2-simple-datatable
 
-A simple, basic, fast DataTable Component Vue.js 2.0.
+A simple, basic, fast DataTable Component for Vue.js 2.0.
 
 ## Installation
 

@@ -1,7 +1,7 @@
 {
   "name": "vue2-simple-datatable",
   "version": "0.1.0",
-  "description": "Simple, basic, fast DataTable Component Vue.js 2.0",
+  "description": "Simple, basic, fast DataTable Component for Vue.js 2.0",
   "main": "dist/vue2-simple-datatable.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production rollup -c"
