@@ -2,6 +2,12 @@
 
 A simple, basic, fast DataTable Component for Vue.js 2.0.
 
+## Required Dependencies 
+
+- [Vue 2](https://vuejs.org/)
+- [Bootstrap 4](https://getbootstrap.com/)
+- [Font Awesome](https://fontawesome.com/)
+
 ## Installation
 
 - #### With Modules
