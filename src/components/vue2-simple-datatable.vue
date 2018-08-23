@@ -4,10 +4,10 @@
         <div class="col-lg-12">
             <div class="dropdown float-right">
               <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ limit }}
+                {{ config.limit }}
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" v-for="limitElement in limits" :key="limitElement" href="#" v-on:click="setLimit(limitElement, $event)">
+                <a class="dropdown-item" v-for="limitElement in config.limits" :key="limitElement" href="#" v-on:click="setLimit(limitElement, $event)">
                   {{ limitElement }}
                 </a>
               </div>
@@ -65,12 +65,14 @@
       }
     },
     data: () => ({
-      limit: 10,
-      limits: [10, 25, 50, 100],
       currentPage: 0,
       sort: undefined,
       ascending: true, // false = descending
       search: {},
+      config: {
+        limit: 10,
+        limits: [10, 25, 50, 100],
+      },
       i18n: {
         countPagedN: 'Showing {from} to {to} of {count} records',
         countN: '{count} records',
@@ -81,7 +83,7 @@
     }),
     computed: {
       totalPages: function () {
-        return Math.ceil(this.total / this.limit)
+        return Math.ceil(this.total / this.config.limit)
       },
       lowerCaseSearch: function () {
         const keys = Object.keys(this.search)
@@ -120,13 +122,13 @@
       },
       rows: function () {
         const all = this.filteredAndSortedData
-        return all.slice(this.offset, this.offset + this.limit)
+        return all.slice(this.offset, this.offset + this.config.limit)
       },
       total: function () {
         return this.filteredData.length
       },
       offset: function () {
-        return this.limit * this.currentPage
+        return this.config.limit * this.currentPage
       },
       countText: function() {
         if (this.totalPages === 1) {
@@ -135,7 +137,7 @@
           return this.i18n.countN.replace('{count}', this.total)
         }
         return this.i18n.countPagedN.replace('{from}', this.offset + 1)
-                                    .replace('{to}', this.offset + this.limit)
+                                    .replace('{to}', this.offset + this.config.limit)
                                     .replace('{count}', this.total)
       }
     },
@@ -159,7 +161,7 @@
       },
       setLimit: function (limit, event) {
         event.preventDefault()
-        this.limit = limit
+        this.config.limit = limit
       },
       sortIconClasses: function (column) {
         if (this.sort !== column) return ['fa', 'fa-sort']

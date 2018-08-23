@@ -41,9 +41,13 @@ export default {
 }
 ```
 
-### i18n
+### config & i18n
 
 ``` js
+const config = {
+    limit: 25,              // initial rows per page limit
+    limits: [25, 50 , 100]  // rows per page limit options
+}
 const i18n = {
     countPagedN: '{from} bis {to} von {count} Einträgen',
     countN: '{count} Einträge',
@@ -51,7 +55,7 @@ const i18n = {
     count0: 'Keine Einträge',
     filterBy: 'Suche nach \'{column}\''
 }
-Vue.use(Vue2SimpleDatatable, {i18n})
+Vue.use(Vue2SimpleDatatable, {config, i18n})
 ```
 
 ## License
