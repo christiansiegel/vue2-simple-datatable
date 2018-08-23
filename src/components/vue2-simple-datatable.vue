@@ -161,6 +161,7 @@
       },
       setLimit: function (limit, event) {
         event.preventDefault()
+        this.currentPage = 0
         this.config.limit = limit
       },
       sortIconClasses: function (column) {
