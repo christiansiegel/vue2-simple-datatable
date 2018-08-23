@@ -72,17 +72,18 @@
         const keys = Object.keys(this.search)
         let result = {}
         keys.forEach(key => {
-          const val = this.search[key].toLowerCase()
-          if (val) result[key] = val
+          const val = this.search[key]
+          if (val) result[key] = val.toLowerCase()
         });
         return result
       },
       filteredData: function() {
         const lowerCaseSearch = this.lowerCaseSearch
         const colMatch = (row, colName) => {
-          const colVal = row[colName].toLowerCase()
+          const colVal = row[colName]
+          if (!colVal) return false
           const searchVal = lowerCaseSearch[colName]
-          return colVal.includes(searchVal)
+          return colVal.toLowerCase().includes(searchVal)
         }
         const searchedCols = Object.keys(lowerCaseSearch)
         const rowMatch = (row) => (
