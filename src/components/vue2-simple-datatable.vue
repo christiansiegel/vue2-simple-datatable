@@ -1,5 +1,19 @@
 <template>
   <div class="vue2-simple-datatable">
+    <div class="row mb-2">
+        <div class="col-lg-12">
+            <div class="dropdown float-right">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ limit }}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" v-for="limitElement in limits" :key="limitElement" href="#" v-on:click="setLimit(limitElement, $event)">
+                  {{ limitElement }}
+                </a>
+              </div>
+            </div>
+        </div>
+    </div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -52,6 +66,7 @@
     },
     data: () => ({
       limit: 10,
+      limits: [10, 25, 50, 100],
       currentPage: 0,
       sort: undefined,
       ascending: true, // false = descending
@@ -134,13 +149,17 @@
         this.currentPage = page
       },
       sortBy: function (column, event) {
-        event.preventDefault();
+        event.preventDefault()
         if (this.sort === column) {
           this.ascending = !this.ascending
         } else {
           this.sort = column
           this.ascending = true
         }
+      },
+      setLimit: function (limit, event) {
+        event.preventDefault()
+        this.limit = limit
       },
       sortIconClasses: function (column) {
         if (this.sort !== column) return ['fa', 'fa-sort']
