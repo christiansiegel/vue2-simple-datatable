@@ -25,7 +25,7 @@
           </th>
         </tr>
         <tr>
-          <th v-for="column in columns" :key="'search_' + column" scope="col">
+          <th v-for="column in columns" :key="column" scope="col">
             <div class="input-group">
               <input type="text" class="form-control" v-model.lazy="search[column]" v-debounce="500" v-bind:placeholder="filterByText(column)">
             </div>
