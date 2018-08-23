@@ -46,7 +46,7 @@ export default {
 ``` js
 const config = {
     limit: 25,              // initial rows per page limit
-    limits: [25, 50 , 100]  // rows per page limit options
+    limits: [25, 50 , 100]  // rows per page limit options (undefined: no dropdown)
 }
 const i18n = {
     countPagedN: '{from} bis {to} von {count} Einträgen',

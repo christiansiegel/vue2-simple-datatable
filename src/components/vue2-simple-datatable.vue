@@ -1,6 +1,6 @@
 <template>
   <div class="vue2-simple-datatable">
-    <div class="row mb-2">
+    <div v-if="config.limits" class="row mb-2">
         <div class="col-lg-12">
             <div class="dropdown float-right">
               <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
