@@ -142,11 +142,29 @@
       }
     },
     watch: {
+      data: {
+        deep: true,
+        handler (val) {
+          this.resetParams()
+        }
+      },
+      columns: {
+        deep: true,
+        handler (val) {
+          this.resetParams()
+        }
+      },
       filteredData: function() {
         this.currentPage = 0
       }
     },
     methods: {
+      resetParams: function () {
+        this.currentPage = 0
+        this.sort = undefined
+        this.ascending = true
+        this.search = {}
+      },
       selectPage: function (page) {
         this.currentPage = page
       },
