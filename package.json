@@ -5,7 +5,8 @@
   "main": "dist/vue2-simple-datatable.js",
   "scripts": {
     "test": "karma start --single-run",
-    "build": "cross-env NODE_ENV=production rollup -c"
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "bundle": "npm install && npm run test && npm run build"
   },
   "repository": {
     "type": "git",
