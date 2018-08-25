@@ -1,5 +1,8 @@
+const replace = require('rollup-plugin-replace')
 const vue = require('rollup-plugin-vue').default
 const buble = require('rollup-plugin-buble')
+const nodeResolve = require('rollup-plugin-node-resolve')
+const commonjs = require('rollup-plugin-commonjs')
 
 const name = require('./package.json').name
 
@@ -22,8 +25,23 @@ module.exports = function (config) {
     },
     rollupPreprocessor: {
       plugins: [
+        replace({
+          'process.env.NODE_ENV': JSON.stringify('production')
+        }),
         vue(),
-        buble()
+        buble(),
+        nodeResolve({
+          browser: true,
+          jsnext: true,
+          main: true
+        }),
+        commonjs({
+          namedExports: {
+            '@vue/test-utils': [
+              'shallowMount'
+            ]
+          }
+        })
       ],
       output: {
         format: 'iife',

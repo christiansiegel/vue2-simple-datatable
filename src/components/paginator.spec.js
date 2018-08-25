@@ -1,4 +1,4 @@
-
+import { shallowMount } from '@vue/test-utils'
 import Paginator from './paginator.vue'
 
 describe('Paginator', () =>  {
@@ -13,11 +13,15 @@ describe('Paginator', () =>  {
   })
 
   it('has the correct props', () => {
-    expect(typeof Paginator.props).toBe('object')
-    const props = Paginator.props
-    expect(props).toEqual(jasmine.objectContaining({
-      total: Number,
-      current: Number
+    const wrapper = shallowMount(Paginator)
+    expect(wrapper.props()).toEqual(jasmine.objectContaining({
+      total: undefined,
+      current: undefined
     }));
+  })
+
+  it('renders a nav', () => {
+    const wrapper = shallowMount(Paginator)
+    expect(wrapper.contains('nav')).toBe(true)
   })
 })

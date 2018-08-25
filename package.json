@@ -31,6 +31,7 @@
     "font-awesome": "^4.7.0"
   },
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.24",
     "cross-env": "^5.0.5",
     "jasmine-core": "^3.2.1",
     "karma": "^3.0.0",
@@ -42,9 +43,11 @@
     "rollup-plugin-commonjs": "^9.1.5",
     "rollup-plugin-license": "^0.7.0",
     "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-uglify": "^4.0.0",
     "rollup-plugin-vue": "^4.3.2",
     "v-debounce": "^0.1.2",
+    "vue": "^2.5.17",
     "vue-template-compiler": "^2.5.17"
   }
 }

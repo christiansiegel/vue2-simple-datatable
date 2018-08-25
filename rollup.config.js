@@ -16,7 +16,11 @@ export default {
     plugins: [
         vue(),
         buble(),
-        nodeResolve({ browser: true, jsnext: true, main: true }),
+        nodeResolve({
+            browser: true,
+            jsnext: true,
+            main: true
+        }),
         commonjs(),
         uglify(),
         license({
