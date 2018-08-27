@@ -143,27 +143,27 @@
     },
     watch: {
       data: {
-        deep: true,
-        handler (val) {
-          this.resetParams()
-        }
+        handler (oldVal, newVal) {
+          this.resetData()
+        },
+        deep: true
       },
       columns: {
-        deep: true,
-        handler (val) {
-          this.resetParams()
-        }
+        handler (oldVal, newVal) {
+          this.resetData()
+        },
+        deep: true
       },
       filteredData: function() {
         this.currentPage = 0
       }
     },
+    created() {
+      this.resetData()
+    },
     methods: {
-      resetParams: function () {
-        this.currentPage = 0
-        this.sort = undefined
-        this.ascending = true
-        this.search = {}
+      resetData: function () {
+        Object.assign(this.$data, this.$options.data.call(this));
       },
       selectPage: function (page) {
         this.currentPage = page
