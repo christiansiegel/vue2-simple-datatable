@@ -8,7 +8,7 @@
       </li>
       <li v-bind:class="['page-item', { 'disabled': current <= 0 }]">
         <a class="page-link" href="#" v-on:click="decrease" aria-label="Previous">
-          <span aria-hidden="true"<i class="fa fa-angle-left"></i></span>
+          <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
         </a>
       </li>
       <li v-bind:class="['page-item', { 'active': item === current }]" v-for="item in items" :key="item">
