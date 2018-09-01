@@ -1,35 +1,32 @@
 <template>
-  <nav aria-label="Page navigation">
+  <nav>
     <ul class="pagination justify-content-center">
-      <li v-bind:class="['page-item', { 'disabled': currentChunk <= 0 }]">
-        <a class="page-link" href="#" v-on:click="first" aria-label="First">
-          <span aria-hidden="true"><i class="fa fa-angle-double-left"></i></span>
-        </a>
-      </li>
-      <li v-bind:class="['page-item', { 'disabled': current <= 0 }]">
-        <a class="page-link" href="#" v-on:click="decrease" aria-label="Previous">
-          <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
-        </a>
-      </li>
-      <li v-bind:class="['page-item', { 'active': item === current }]" v-for="item in items" :key="item">
-        <a class="page-link" href="#" v-on:click="select(item, $event)">{{ item + 1 }}</a>
-      </li>
-      <li v-bind:class="['page-item', { 'disabled': current >= total - 1 }]">
-        <a class="page-link" href="#" v-on:click="increase" aria-label="Next">
-          <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
-        </a>
-      </li>
-      <li v-bind:class="['page-item', { 'disabled': currentChunk >= totalChunks - 1 }]">
-        <a class="page-link" href="#" v-on:click="last" aria-label="Last">
-          <span aria-hidden="true"><i class="fa fa-angle-double-right"></i></span>
-        </a>
-      </li>
+      <paginator-item :disabled="currentChunk <= 0" v-on:click="first">
+        <i class="fas fa-angle-double-left"></i>
+      </paginator-item>
+      <paginator-item :disabled="current <= 0" v-on:click="decrease">
+        <i class="fas fa-angle-left"></i>
+      </paginator-item>
+      <paginator-item v-for="item in items" :key="item" :active="item === current" v-on:click="select(item)">
+        {{ item + 1 }}
+      </paginator-item>
+      <paginator-item :disabled="current >= total - 1" v-on:click="increase">
+        <i class="fas fa-angle-right"></i>
+      </paginator-item>
+      <paginator-item :disabled="currentChunk >= totalChunks - 1" v-on:click="last">
+        <i class="fas fa-angle-double-right"></i>
+      </paginator-item>
     </ul>
   </nav>
 </template>
 
 <script>
+  import PaginatorItem from './paginator-item.vue'
+
   export default {
+    components: {
+      'paginator-item': PaginatorItem
+    },
     props: {
       total: Number,
       current: Number
@@ -51,24 +48,19 @@
       }
     },
     methods: {
-      select: function (item, event) {
-        event.preventDefault();
+      select: function (item) {
         this.$emit('select', item)
       },
       increase: function (event) {
-        event.preventDefault();
         this.$emit('select', this.current + 1)
       },
       decrease: function (event) {
-        event.preventDefault();
         this.$emit('select', this.current - 1)
       },
       first: function (event) {
-        event.preventDefault();
         this.$emit('select', 0)
       },
       last: function (event) {
-        event.preventDefault();
         this.$emit('select', this.total - 1)
       }
     }
