@@ -749,4 +749,6 @@ var persons = [
     last: 'Boy',
     age: 89
   }
-]
+];
+
+exports.persons = persons;

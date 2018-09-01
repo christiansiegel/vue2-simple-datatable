@@ -6,9 +6,10 @@
   "scripts": {
     "test": "karma start --single-run",
     "test:watch": "karma start",
-    "build": "cross-env NODE_ENV=production rollup -c",
-    "build:ci": "npm run test && npm run build",
-    "build:commit": "npm install && npm run test && npm run build"
+    "build:lib": "cross-env NODE_ENV=production rollup -c",
+    "build:examples": "cross-env NODE_ENV=production rollup --config examples/advanced/rollup.config.js",
+    "build": "npm run test && npm run build:lib && npm run build:examples",
+    "build:commit": "npm install && npm run build"
   },
   "repository": {
     "type": "git",
