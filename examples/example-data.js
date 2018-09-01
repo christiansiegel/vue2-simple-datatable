@@ -1,4 +1,4 @@
-var persons = [
+var data = [
   {
     first: 'Corina',
     last: 'Bouchier',
@@ -751,4 +751,8 @@ var persons = [
   }
 ];
 
-exports.persons = persons;
+if(typeof exports === 'undefined') {
+  exports = this;
+}
+
+exports.persons = data;
