@@ -48,7 +48,7 @@
       }
     },
     methods: {
-      select() {
+      select(item) {
         this.$emit('select', item)
       },
       increase() {
