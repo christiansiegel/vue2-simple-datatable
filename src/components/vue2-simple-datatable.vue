@@ -82,10 +82,10 @@
       }
     }),
     computed: {
-      totalPages: function () {
+      totalPages() {
         return Math.ceil(this.total / this.config.limit)
       },
-      lowerCaseSearch: function () {
+      lowerCaseSearch() {
         const keys = Object.keys(this.search)
         let result = {}
         keys.forEach(key => {
@@ -94,7 +94,7 @@
         });
         return result
       },
-      filteredData: function() {
+      filteredData() {
         const lowerCaseSearch = this.lowerCaseSearch
         const colMatch = (row, colName) => {
           const colVal = row[colName]
@@ -108,7 +108,7 @@
         )
         return this.data.filter(row => rowMatch(row))
       },
-      filteredAndSortedData: function() {
+      filteredAndSortedData() {
         const rows = this.filteredData
         if(this.sort) {
           const col = this.sort
@@ -120,17 +120,17 @@
         }
         return rows
       },
-      rows: function () {
+      rows() {
         const all = this.filteredAndSortedData
         return all.slice(this.offset, this.offset + this.config.limit)
       },
-      total: function () {
+      total() {
         return this.filteredData.length
       },
-      offset: function () {
+      offset() {
         return this.config.limit * this.currentPage
       },
-      countText: function() {
+      countText() {
         if (this.totalPages === 1) {
           if (this.total === 0) return this.i18n.count0
           if (this.total === 1) return this.i18n.count1
@@ -143,18 +143,18 @@
     },
     watch: {
       data: {
-        handler (oldVal, newVal) {
+        handler(oldVal, newVal) {
           this.resetData()
         },
         deep: true
       },
       columns: {
-        handler (oldVal, newVal) {
+        handler(oldVal, newVal) {
           this.resetData()
         },
         deep: true
       },
-      filteredData: function() {
+      filteredData() {
         this.currentPage = 0
       }
     },
@@ -162,13 +162,13 @@
       this.resetData()
     },
     methods: {
-      resetData: function () {
+      resetData() {
         Object.assign(this.$data, this.$options.data.call(this));
       },
-      selectPage: function (page) {
+      selectPage(page) {
         this.currentPage = page
       },
-      sortBy: function (column, event) {
+      sortBy(column, event) {
         event.preventDefault()
         if (this.sort === column) {
           this.ascending = !this.ascending
@@ -177,17 +177,17 @@
           this.ascending = true
         }
       },
-      setLimit: function (limit, event) {
+      setLimit(limit, event) {
         event.preventDefault()
         this.currentPage = 0
         this.config.limit = limit
       },
-      sortIconClasses: function (column) {
+      sortIconClasses(column) {
         if (this.sort !== column) return ['fa', 'fa-sort']
         if (this.ascending === true) return ['fa', 'fa-sort-up']
         return ['fa', 'fa-sort-down']
       },
-      filterByText: function(column) {
+      filterByText(column) {
         return this.i18n.filterBy.replace('{column}', column)
       }
     }

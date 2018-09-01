@@ -13,7 +13,7 @@
       disabled: Boolean,
     },
     methods: {
-      click: function (event) {
+      click(event) {
         event.preventDefault();
         this.$emit('click')
       }

@@ -35,32 +35,32 @@
       chunkSize: 10,
     }),
     computed: {
-      totalChunks: function () {
+      totalChunks() {
         return Math.ceil(this.total / this.chunkSize)
       },
-      currentChunk: function () {
+      currentChunk() {
         return Math.floor(this.current / this.chunkSize)
       },
-      items: function () {
+      items() {
         const first = this.currentChunk * this.chunkSize
         const len = (first + this.chunkSize) > this.total ? this.total - first : this.chunkSize
         return Array(len).fill(0).map((e,i)=>first + i)
       }
     },
     methods: {
-      select: function () {
+      select() {
         this.$emit('select', item)
       },
-      increase: function () {
+      increase() {
         this.$emit('select', this.current + 1)
       },
-      decrease: function () {
+      decrease() {
         this.$emit('select', this.current - 1)
       },
-      first: function () {
+      first() {
         this.$emit('select', 0)
       },
-      last: function () {
+      last() {
         this.$emit('select', this.total - 1)
       }
     }
