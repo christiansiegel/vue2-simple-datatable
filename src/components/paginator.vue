@@ -48,19 +48,19 @@
       }
     },
     methods: {
-      select: function (item) {
+      select: function () {
         this.$emit('select', item)
       },
-      increase: function (event) {
+      increase: function () {
         this.$emit('select', this.current + 1)
       },
-      decrease: function (event) {
+      decrease: function () {
         this.$emit('select', this.current - 1)
       },
-      first: function (event) {
+      first: function () {
         this.$emit('select', 0)
       },
-      last: function (event) {
+      last: function () {
         this.$emit('select', this.total - 1)
       }
     }
