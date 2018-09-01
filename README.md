@@ -3,6 +3,18 @@
 
 A simple, basic, fast DataTable Component for Vue.js 2.0.
 
+## Examples
+
+### Basic
+
+[Demo](https://christiansiegel.github.io/vue2-simple-datatable/examples/basic/)\
+[Source](examples/basic)
+
+### Advanced
+
+[Demo](https://christiansiegel.github.io/vue2-simple-datatable/examples/advanced/dist)\
+[Source](examples/advanced)
+
 ## Required Dependencies 
 
 - [Vue 2](https://vuejs.org/)
@@ -46,8 +58,8 @@ export default {
 
 ``` js
 const config = {
-    limit: 25,              // initial rows per page limit
-    limits: [25, 50 , 100]  // rows per page limit options (undefined: no dropdown)
+    limit: 25,             // initial rows per page limit
+    limits: [25, 50, 100]  // rows per page limit options (undefined: no dropdown)
 }
 const i18n = {
     countPagedN: '{from} bis {to} von {count} Einträgen',
