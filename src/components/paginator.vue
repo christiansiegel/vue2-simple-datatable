@@ -1,19 +1,19 @@
 <template>
   <nav>
     <ul class="pagination justify-content-center">
-      <paginator-item :disabled="currentChunk <= 0" v-on:click="first">
+      <paginator-item :disabled="current <= 0" v-on:click="first">
         <i class="fas fa-angle-double-left"></i>
       </paginator-item>
       <paginator-item :disabled="current <= 0" v-on:click="decrease">
         <i class="fas fa-angle-left"></i>
       </paginator-item>
-      <paginator-item v-for="item in items" :key="item" :active="item === current" v-on:click="select(item)">
+      <paginator-item v-for="(item, index) in items" :key="index" :active="item === current" v-on:click="select(item)">
         {{ item + 1 }}
       </paginator-item>
       <paginator-item :disabled="current >= total - 1" v-on:click="increase">
         <i class="fas fa-angle-right"></i>
       </paginator-item>
-      <paginator-item :disabled="currentChunk >= totalChunks - 1" v-on:click="last">
+      <paginator-item :disabled="current >= total - 1" v-on:click="last">
         <i class="fas fa-angle-double-right"></i>
       </paginator-item>
     </ul>
@@ -49,6 +49,7 @@
     },
     methods: {
       select(item) {
+        if(item === this.current) return
         this.$emit('select', item)
       },
       increase() {
