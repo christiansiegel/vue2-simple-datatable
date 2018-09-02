@@ -751,8 +751,25 @@ var data = [
   }
 ];
 
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+function manyPersons(n) {
+  var result = [];
+  for(var i = 0; i < n; i++) {
+    result.push({
+      first: data[randomInt(0, data.length - 1)].first,
+      last: data[randomInt(0, data.length - 1)].last,
+      age: randomInt(1, 99)
+    });
+  }
+  return result;
+}
+
 if(typeof exports === 'undefined') {
   exports = this;
 }
 
 exports.persons = data;
+exports.manyPersons = manyPersons;

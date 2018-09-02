@@ -12,12 +12,12 @@
 </template>
 
 <script>
-import {persons} from '../../example-data.js'
+import {manyPersons} from '../../example-data.js'
 
 export default {
   name: 'app',
   data: () => ({
-    data: persons, // example-data.js
+    data: manyPersons(10000), // example-data.js
     columns: [ 'first', 'last', 'age' ]
   })
 }
