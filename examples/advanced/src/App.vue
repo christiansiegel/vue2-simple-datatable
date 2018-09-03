@@ -6,7 +6,7 @@
       </a>
     </h1>
     <h2>Advanced Example</h2>
-
+    <pre>initialSearch: {{ JSON.stringify(initialSearch) }}</pre>
     <vue2-simple-datatable :data="data" :columns="columns" :initial-search="initialSearch"/>
   </div>
 </template>
