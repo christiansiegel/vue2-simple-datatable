@@ -57,23 +57,25 @@
         default: []
       }
     },
-    data: () => ({
-      currentPage: 0,
-      sort: undefined,
-      ascending: true, // false = descending
-      search: {},
-      config: {
-        limit: 10,
-        limits: [10, 25, 50, 100],
-      },
-      i18n: {
-        countPagedN: 'Showing {from} to {to} of {count} records',
-        countN: '{count} records',
-        count1: 'One record',
-        count0: 'No records',
-        filterBy: 'Filter by {column}'
+    data() {
+      return {
+        currentPage: 0,
+        sort: undefined,
+        ascending: true, // false = descending
+        search: {},
+        config: {
+          limit: 10,
+          limits: [10, 25, 50, 100],
+        },
+        i18n: {
+          countPagedN: 'Showing {from} to {to} of {count} records',
+          countN: '{count} records',
+          count1: 'One record',
+          count0: 'No records',
+          filterBy: 'Filter by {column}'
+        }
       }
-    }),
+    },
     computed: {
       totalPages() {
         return Math.ceil(this.total / this.config.limit)

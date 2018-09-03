@@ -31,9 +31,11 @@
       total: Number,
       current: Number
     },
-    data: () => ({
-      chunkSize: 10,
-    }),
+    data() {
+      return {
+        chunkSize: 10
+      }
+    },
     computed: {
       totalChunks() {
         return Math.ceil(this.total / this.chunkSize)
