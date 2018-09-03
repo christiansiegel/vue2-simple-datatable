@@ -1,18 +1,9 @@
 <template>
   <div class="vue2-simple-datatable">
     <div v-if="config.limits" class="row mb-2">
-        <div class="col-lg-12">
-            <div class="dropdown float-right">
-              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ config.limit }}
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" v-for="limitElement in config.limits" :key="limitElement" href="#" v-on:click="setLimit(limitElement, $event)">
-                  {{ limitElement }}
-                </a>
-              </div>
-            </div>
-        </div>
+      <div class="col-lg-12">
+        <dropdown class="float-right" :items="config.limits" :current="config.limit" v-on:select="setLimit"></dropdown>
+      </div>
     </div>
     <table class="table table-striped">
       <thead>
@@ -46,10 +37,12 @@
 <script>
   import debounce from 'v-debounce'
   import Paginator from './paginator.vue'
+  import Dropdown from './dropdown.vue'
 
   export default {
     components: {
-      'paginator': Paginator
+      'paginator': Paginator,
+      'dropdown': Dropdown
     },
     directives: {
       debounce
@@ -177,8 +170,7 @@
           this.ascending = true
         }
       },
-      setLimit(limit, event) {
-        event.preventDefault()
+      setLimit(limit) {
         this.currentPage = 0
         this.config.limit = limit
       },
