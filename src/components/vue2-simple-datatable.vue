@@ -55,7 +55,8 @@
       columns: {
         type: Array,
         default: []
-      }
+      },
+      initialSearch: Object
     },
     data() {
       return {
@@ -138,16 +139,23 @@
     },
     watch: {
       data: {
-        handler(oldVal, newVal) {
+        handler(newVal, oldVal) {
           this.resetData()
         },
         deep: true
       },
       columns: {
-        handler(oldVal, newVal) {
+        handler(newVal, oldVal) {
           this.resetData()
         },
         deep: true
+      },
+      initialSearch: {
+        handler(newVal, oldVal) {
+          this.search = Object.assign({}, newVal)
+        },
+        deep: true,
+        immediate: true
       },
       filteredData() {
         this.currentPage = 0

@@ -38,7 +38,7 @@ A simple, basic, fast DataTable Component for Vue.js 2.0.
 ## Usage
 
 ``` html
-<vue2-simple-datatable :data="data" :columns="columns" />
+<vue2-simple-datatable :data="data" :columns="columns" initial-search="initialSearch" />
 ```
 
 ``` js
@@ -49,7 +49,12 @@ export default {
       { 'a': 2, 'b': 'y' },
       { 'a': 3, 'b': 'x' }
     ],
-    columns: [ 'a', 'b' ]
+    columns: [ 'a', 'b' ],
+
+    // optional:
+    initialSearch: {
+      b: 'y'
+    }
   })
 }
 ```

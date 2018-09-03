@@ -7,7 +7,7 @@
     </h1>
     <h2>Advanced Example</h2>
 
-    <vue2-simple-datatable :data="data" :columns="columns" />
+    <vue2-simple-datatable :data="data" :columns="columns" :initial-search="initialSearch"/>
   </div>
 </template>
 
@@ -18,7 +18,10 @@ export default {
   name: 'app',
   data: () => ({
     data: manyPersons(10000), // example-data.js
-    columns: [ 'first', 'last', 'age' ]
+    columns: [ 'first', 'last', 'age' ],
+    initialSearch: {
+      first: 'Bert'
+    }
   })
 }
 </script>
