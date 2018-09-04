@@ -185,9 +185,9 @@
         this.config.limit = limit
       },
       sortIconClasses(column) {
-        if (this.sort !== column) return ['fa', 'fa-sort']
-        if (this.ascending === true) return ['fa', 'fa-sort-up']
-        return ['fa', 'fa-sort-down']
+        if (this.sort !== column) return ['fas', 'fa-sort']
+        if (this.ascending === true) return ['fas', 'fa-sort-up']
+        return ['fas', 'fa-sort-down']
       },
       filterByText(column) {
         return this.i18n.filterBy.replace('{column}', column)
