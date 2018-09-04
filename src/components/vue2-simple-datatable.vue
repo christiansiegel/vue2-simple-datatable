@@ -94,7 +94,7 @@
         const lowerCaseSearch = this.lowerCaseSearch
         const colMatch = (row, colName) => {
           const colVal = row[colName]
-          if (!colVal) return false
+          if (!colVal) return true // ignore unknown cols
           const searchVal = lowerCaseSearch[colName]
           return colVal.toLowerCase().includes(searchVal)
         }
