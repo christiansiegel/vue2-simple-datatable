@@ -63,8 +63,12 @@ export default {
 
 ``` js
 const config = {
-    limit: 25,             // initial rows per page limit
-    limits: [25, 50, 100]  // rows per page limit options (undefined: no dropdown)
+    limit: 25,             // initial rows per page limit (default: 10)
+
+    limits: [25, 50, 100]  // rows per page limit options, or 'undefined' to
+                           // hide dropdown (default: [10, 25, 50, 100])
+
+    regexSearch: true      // enable regex in search (default: false)
 }
 const i18n = {
     countPagedN: '{from} bis {to} von {count} Einträgen',

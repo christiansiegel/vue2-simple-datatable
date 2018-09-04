@@ -20,7 +20,8 @@ export default {
     data: manyPersons(10000), // example-data.js
     columns: [ 'first', 'last', 'age' ],
     initialSearch: {
-      first: 'Bert'
+      first: 'bert',
+      last: '^A'
     }
   })
 }

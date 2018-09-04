@@ -67,6 +67,7 @@
         config: {
           limit: 10,
           limits: [10, 25, 50, 100],
+          regexSearch: false
         },
         i18n: {
           countPagedN: 'Showing {from} to {to} of {count} records',
@@ -81,24 +82,23 @@
       totalPages() {
         return Math.ceil(this.total / this.config.limit)
       },
-      lowerCaseSearch() {
+      searchFuncs() {
         const keys = Object.keys(this.search)
         let result = {}
         keys.forEach(key => {
-          const val = this.search[key]
-          if (val) result[key] = val.toLowerCase()
+          const searchString = this.search[key]
+          if (!searchString) return
+          result[key] = this.createSearcFuncs(searchString)
         });
         return result
       },
       filteredData() {
-        const lowerCaseSearch = this.lowerCaseSearch
+        const search = this.searchFuncs
+        const searchedCols = Object.keys(search)
         const colMatch = (row, colName) => {
           const colVal = row[colName]
-          if (!colVal) return true // ignore unknown cols
-          const searchVal = lowerCaseSearch[colName]
-          return colVal.toLowerCase().includes(searchVal)
+          return search[colName](colVal)
         }
-        const searchedCols = Object.keys(lowerCaseSearch)
         const rowMatch = (row) => (
           !searchedCols.some(col => !colMatch(row, col))
         )
@@ -191,6 +191,15 @@
       },
       filterByText(column) {
         return this.i18n.filterBy.replace('{column}', column)
+      },
+      createSearcFuncs(search) {
+        const val = search.toLowerCase()
+        if(this.config.regexSearch === true) {
+          const regex = new RegExp(val, 'g')
+          return (input) => (!input || input.toString().toLowerCase().match(regex))
+        } else {
+          return (input) => (!input || input.toString().toLowerCase().includes(val))
+        }
       }
     }
   }
