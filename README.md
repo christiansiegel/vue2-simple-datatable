@@ -59,7 +59,22 @@ export default {
 }
 ```
 
-### config & i18n
+### Custom columns
+
+Columns can be customized via named scoped slots. The following example renders column `a` with italic and column `b` with bold font.
+
+``` html
+<vue2-simple-datatable :data="data" :columns="columns">
+  <template slot="a" slot-scope="{value}">
+    <em>{{ value }}</em>
+  </template>
+  <template slot="b" slot-scope="{value}">
+    <b>{{ value }}</b>
+  </template>
+</vue2-simple-datatable>
+```
+
+### Config & i18n
 
 ``` js
 const config = {

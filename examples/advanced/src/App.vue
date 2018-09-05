@@ -7,7 +7,11 @@
     </h1>
     <h2>Advanced Example</h2>
     <pre>initialSearch: {{ JSON.stringify(initialSearch) }}</pre>
-    <vue2-simple-datatable :data="data" :columns="columns" :initial-search="initialSearch"/>
+    <vue2-simple-datatable :data="data" :columns="columns" :initial-search="initialSearch">
+      <template slot="age" slot-scope="{value}">
+        <span class="badge badge-pill badge-secondary">{{ value }}</span>
+      </template>
+    </vue2-simple-datatable>
   </div>
 </template>
 

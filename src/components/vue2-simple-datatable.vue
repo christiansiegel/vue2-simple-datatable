@@ -25,7 +25,11 @@
       </thead>
       <tbody>
         <tr v-for="(row, index) in rows" :key="index">
-          <td v-for="column in columns" :key="column+index">{{ row[column] }}</td>
+          <td v-for="column in columns" :key="column+index">
+            <slot :name="column" :value="row[column]">
+              {{ row[column] }}
+            </slot>
+          </td>
         </tr>
       </tbody>
     </table>
