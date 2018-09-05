@@ -6,8 +6,10 @@ var Vue2SimpleDatatable = {
             extends: vue2SimpleDatatable,
             mixins: [{
                 created () {
-                    this.config = Object.assign(this.config, options.config)
-                    this.i18n = Object.assign(this.i18n, options.i18n)
+                    if(options) {
+                        this.config = Object.assign(this.config, options.config)
+                        this.i18n = Object.assign(this.i18n, options.i18n)
+                    }
                 }
             }]
         }))
