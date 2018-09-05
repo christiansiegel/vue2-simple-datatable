@@ -63,7 +63,7 @@
         currentPage: 0,
         sort: undefined,
         ascending: true, // false = descending
-        search: {},
+        search: this.initialSearch,
         config: {
           limit: 10,
           limits: [10, 25, 50, 100],
@@ -139,19 +139,19 @@
     },
     watch: {
       data: {
-        handler(newVal, oldVal) {
-          this.resetData()
+        handler() {
+          this.resetState()
         },
         deep: true
       },
       columns: {
-        handler(newVal, oldVal) {
-          this.resetData()
+        handler() {
+          this.resetState()
         },
         deep: true
       },
       initialSearch: {
-        handler(newVal, oldVal) {
+        handler(newVal) {
           this.search = Object.assign({}, newVal)
         },
         deep: true,
@@ -161,12 +161,15 @@
         this.currentPage = 0
       }
     },
-    created() {
-      this.resetData()
-    },
     methods: {
-      resetData() {
-        Object.assign(this.$data, this.$options.data.call(this));
+      resetState() {
+        const initialData = this.$options.data()
+
+        this.currentPage = initialData.currentPage
+        this.sort = initialData.sort
+        this.ascending = initialData.ascending
+
+        this.search = Object.assign({}, this.initialSearch)
       },
       selectPage(page) {
         this.currentPage = page
