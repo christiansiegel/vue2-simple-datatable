@@ -4,7 +4,8 @@ var Vue2SimpleDatatable = {
     install(Vue, options) {
         if(options) {
             let data = vue2SimpleDatatable.data()
-            Object.assign(data, options);
+            Object.assign(data.i18n, options.i18n);
+            Object.assign(data.config, options.config);
             vue2SimpleDatatable.data = () => (data)
         }
         Vue.component('vue2-simple-datatable', vue2SimpleDatatable)

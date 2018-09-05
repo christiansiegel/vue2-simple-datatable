@@ -65,7 +65,7 @@ export default {
 const config = {
     limit: 25,             // initial rows per page limit (default: 10)
 
-    limits: [25, 50, 100]  // rows per page limit options, or 'undefined' to
+    limits: [25, 50, 100], // rows per page limit options, or 'undefined' to
                            // hide dropdown (default: [10, 25, 50, 100])
 
     regexSearch: true      // enable regex in search (default: false)

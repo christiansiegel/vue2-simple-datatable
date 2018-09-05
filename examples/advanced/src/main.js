@@ -5,8 +5,8 @@ import Vue2SimpleDatatable from '../../../dist/vue2-simple-datatable.min.js'
 Vue.config.productionTip = false;
 
 const config = {
-  limit: 5,          // initial rows per page limit
-  limits: [5, 42],   // rows per page limit options (undefined: no dropdown)
+  limit: 5,
+  limits: [5, 42],
   regexSearch: true
 }
 const i18n = {
