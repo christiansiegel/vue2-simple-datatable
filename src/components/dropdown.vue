@@ -1,9 +1,9 @@
 <template>
   <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button class="btn btn-primary dropdown-toggle" type="button" :id="buttonId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       {{ current }}
     </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <div class="dropdown-menu" :aria-labelledby="buttonId">
       <a class="dropdown-item" v-for="item in items" :key="item" href="#" v-on:click="select(item, $event)">
         {{ item }}
       </a>
@@ -16,6 +16,11 @@
     props: {
       items: Array,
       current: Number,
+    },
+    data() {
+      return {
+        buttonId: 'dropdownMenuButton-' + this._uid
+      }
     },
     methods: {
       select(item, event) {

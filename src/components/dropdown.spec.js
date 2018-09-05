@@ -20,6 +20,26 @@ describe('dropdown.vue', () =>  {
     expect(wrapper.find('button.dropdown-toggle').text()).toBe('4711')
   })
 
+  it('it button has a random id', () => {
+    const button = wrapper.find('button.dropdown-toggle')
+    const buttonId = button.attributes()['id']
+
+    const prefix = 'dropdownMenuButton-'
+
+    expect(buttonId.length > prefix.length).toBe(true)
+    expect(buttonId.substring(0, prefix.length)).toBe(prefix)
+  })
+
+  it('it has a dropdown menu that is labelled by the button', () => {
+    const button = wrapper.find('button.dropdown-toggle')
+    const buttonId = button.attributes()['id']
+
+    const menu = wrapper.find('div.dropdown-menu')
+    const menuLabelledby = menu.attributes()['aria-labelledby']
+
+    expect(buttonId).toBe(menuLabelledby)
+  })
+
   describe('it has a dropdown menu with dropdown items', () => {
     let items
 
