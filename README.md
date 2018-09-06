@@ -17,7 +17,7 @@ A simple, basic, fast DataTable Component for Vue.js 2.0.
 
 ## Required Dependencies 
 
-- [Vue 2](https://vuejs.org/)
+- [Vue 2.5+](https://vuejs.org/)
 - [Bootstrap 4](https://getbootstrap.com/)
 - [Font Awesome 5](https://fontawesome.com/)
 
@@ -65,12 +65,12 @@ Columns can be customized via named scoped slots. The following example renders 
 
 ``` html
 <vue2-simple-datatable :data="data" :columns="columns">
-  <template slot="a" slot-scope="{value}">
-    <em>{{ value }}</em>
-  </template>
-  <template slot="b" slot-scope="{value}">
-    <b>{{ value }}</b>
-  </template>
+  <span slot="a" slot-scope="{value}" style="font-style: italic">
+    {{ value }}
+  </span>
+  <span slot="b" slot-scope="{value}" style="font-weight: bold">
+    {{ value }}
+  </span>
 </vue2-simple-datatable>
 ```
 
