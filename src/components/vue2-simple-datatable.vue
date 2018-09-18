@@ -203,9 +203,9 @@
         const val = search.toLowerCase()
         if(this.config.regexSearch === true) {
           const regex = new RegExp(val, 'g')
-          return (input) => (!input || input.toString().toLowerCase().match(regex))
+          return (input) => (input ? input.toString().toLowerCase().match(regex) : false)
         } else {
-          return (input) => (!input || input.toString().toLowerCase().includes(val))
+          return (input) => (input ? input.toString().toLowerCase().includes(val) : false)
         }
       }
     }
