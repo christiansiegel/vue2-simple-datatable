@@ -7,7 +7,7 @@
     </h1>
     <h2>Advanced Example</h2>
     <pre>initialSearch: {{ JSON.stringify(initialSearch) }}</pre>
-    <vue2-simple-datatable :data="data" :columns="columns" :initial-search="initialSearch">
+    <vue2-simple-datatable :data="data" :columns="columns" :initial-search="initialSearch" v-on:export="exportHandler">
       <span class="badge badge-pill badge-secondary" slot="age" slot-scope="{value}">
         {{ value }}
       </span>
@@ -27,6 +27,11 @@ export default {
       first: 'bert',
       last: '^A'
     }
-  })
+  }),
+  methods: {
+    exportHandler(rows) {
+      alert("The vue2-simple-datatable just returned " + data.length + " sorted and filtered rows.")
+    }
+  }
 }
 </script>

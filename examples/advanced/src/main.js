@@ -7,7 +7,8 @@ Vue.config.productionTip = false;
 const config = {
   limit: 5,
   limits: [5, 42],
-  regexSearch: true
+  regexSearch: true,
+  exportButton: true
 }
 const i18n = {
   countPagedN: '{from} bis {to} von {count} Einträgen',

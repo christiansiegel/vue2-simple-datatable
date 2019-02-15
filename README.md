@@ -83,7 +83,8 @@ const config = {
     limits: [25, 50, 100], // rows per page limit options, or 'undefined' to
                            // hide dropdown (default: [10, 25, 50, 100])
 
-    regexSearch: true      // enable regex in search (default: false)
+    regexSearch: true,     // enable regex in search (default: false)
+    exportButton: true     // show export button (default: false)
 }
 const i18n = {
     countPagedN: '{from} bis {to} von {count} Einträgen',

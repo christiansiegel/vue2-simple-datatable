@@ -1,8 +1,12 @@
 <template>
   <div class="vue2-simple-datatable">
-    <div v-if="config.limits" class="row mb-2">
+    <div v-if="config.limits || config.exportButton" class="row mb-2">
       <div class="col-lg-12">
-        <dropdown class="float-right" :items="config.limits" :current="config.limit" v-on:select="setLimit"></dropdown>
+        <dropdown v-if="config.limits" class="float-right ml-2" :items="config.limits" :current="config.limit" v-on:select="setLimit">
+        </dropdown>
+        <button v-if="config.exportButton" class="btn btn-secondary float-right" type="button" v-on:click="exportData">
+          <i class="fas fa-file-download"></i>
+        </button>
       </div>
     </div>
     <table class="table table-striped">
@@ -71,7 +75,8 @@
         config: {
           limit: 10,
           limits: [10, 25, 50, 100],
-          regexSearch: false
+          regexSearch: false,
+          exportButton: false
         },
         i18n: {
           countPagedN: 'Showing {from} to {to} of {count} records',
@@ -207,6 +212,9 @@
         } else {
           return (input) => (input ? input.toString().toLowerCase().includes(val) : false)
         }
+      },
+      exportData() {
+        this.$emit('export', this.filteredAndSortedData)
       }
     }
   }
