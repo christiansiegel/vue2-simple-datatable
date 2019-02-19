@@ -29,7 +29,7 @@ export default {
     }
   }),
   methods: {
-    exportHandler(rows) {
+    exportHandler(data) {
       alert("The vue2-simple-datatable just returned " + data.length + " sorted and filtered rows.")
     }
   }
