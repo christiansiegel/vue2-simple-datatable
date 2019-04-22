@@ -15,7 +15,8 @@ const i18n = {
   countN: '{count} Einträge',
   count1: '1 Eintrag',
   count0: 'Keine Einträge',
-  filterBy: 'Suche nach \'{column}\''
+  filterBy: 'Suche nach \'{column}\'',
+  export: 'Exportieren'
 }
 Vue.use(Vue2SimpleDatatable, {config, i18n})
 

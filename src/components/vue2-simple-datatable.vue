@@ -6,6 +6,9 @@
         </dropdown>
         <button v-if="config.exportButton" class="btn btn-secondary float-right" type="button" v-on:click="exportData">
           <i class="fas fa-file-download"></i>
+          <span v-if="i18n.export && i18n.export.length > 0" class="ml-1">
+            {{ i18n.export }}
+          </span>
         </button>
       </div>
     </div>
@@ -83,7 +86,8 @@
           countN: '{count} records',
           count1: 'One record',
           count0: 'No records',
-          filterBy: 'Filter by {column}'
+          filterBy: 'Filter by {column}',
+          export: 'Export'
         }
       }
     },
