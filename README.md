@@ -87,11 +87,11 @@ const config = {
     exportButton: true     // show export button (default: false)
 }
 const i18n = {
-    countPagedN: '{from} bis {to} von {count} Einträgen',
-    countN: '{count} Einträge',
-    count1: '1 Eintrag',
-    count0: 'Keine Einträge',
-    filterBy: 'Suche nach \'{column}\''
+    countPagedN: '{from} bis {to} von {count}', // default: 'Showing {from} to {to} of {count} records'
+    countN: '{count} Einträge',                 // default: '{count} records'
+    count1: '1 Eintrag',                        // default: 'One record'
+    count0: 'Keine Einträge',                   // default: 'No records'
+    filterBy: 'Suche nach \'{column}\''         // default: 'Filter by {column}'
 }
 Vue.use(Vue2SimpleDatatable, {config, i18n})
 ```
