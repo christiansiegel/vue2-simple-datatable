@@ -79,7 +79,7 @@ Columns can be customized via named scoped slots. The following example renders 
 
 ### Export button
 
-If the export button is enabled (see [Config & i18n](config--i18n)) the table component emits an `export` event if it is clicked. Its payload contains the table's sorted and filtered data.
+If the export button is enabled (see [Config & i18n](#config--i18n)) the table component emits an `export` event if it is clicked. Its payload contains the table's sorted and filtered data.
 
 ``` html
 <vue2-simple-datatable :data="data" :columns="columns" v-on:export="exportHandler">
