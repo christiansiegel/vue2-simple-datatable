@@ -23,7 +23,7 @@ A simple, basic, fast DataTable Component for Vue.js 2.0.
 
 ## Installation
 
-- #### With Modules
+- **With Modules**
 
   ``` js
   import Vue from 'vue'
@@ -31,7 +31,7 @@ A simple, basic, fast DataTable Component for Vue.js 2.0.
   Vue.use(Vue2SimpleDatatable)
   ```
 
-- #### `<script>` Include
+- **`<script>` Include**
 
   Just include `./dist/vue2-simple-datatable.min.js` after Vue itself.
 
