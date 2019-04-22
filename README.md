@@ -24,6 +24,9 @@ A simple, basic, fast DataTable Component for Vue.js 2.0.
 ## Installation
 
 - **With Modules**
+  ```bash
+  npm i vue2-simple-datatable
+  ```
 
   ``` js
   import Vue from 'vue'
