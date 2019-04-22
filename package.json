@@ -1,6 +1,6 @@
 {
   "name": "vue2-simple-datatable",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "Simple, basic, fast DataTable Component for Vue.js 2.0",
   "main": "dist/vue2-simple-datatable.min.js",
   "scripts": {
