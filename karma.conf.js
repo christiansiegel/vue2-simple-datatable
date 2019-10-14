@@ -1,5 +1,5 @@
 const replace = require('rollup-plugin-replace')
-const vue = require('rollup-plugin-vue').default
+const vue = require('rollup-plugin-vue')
 const buble = require('rollup-plugin-buble')
 const nodeResolve = require('rollup-plugin-node-resolve')
 const commonjs = require('rollup-plugin-commonjs')
