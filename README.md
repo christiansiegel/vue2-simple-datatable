@@ -1,5 +1,5 @@
 # vue2-simple-datatable
-[![Build Status](https://travis-ci.org/christiansiegel/vue2-simple-datatable.svg?branch=master)](https://travis-ci.org/christiansiegel/vue2-simple-datatable)
+[![Build Status](https://travis-ci.com/christiansiegel/vue2-simple-datatable.svg?branch=master)](https://travis-ci.com/christiansiegel/vue2-simple-datatable)
 
 A simple, basic, fast DataTable Component for Vue.js 2.0.
 
